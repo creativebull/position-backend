@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -11,11 +13,15 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authentication");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-    next();
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+
+  next();
 });
 
 app.use('/api/places', placesRoutes);
@@ -27,18 +33,23 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
+  if (req.file) {
+    fs.unlink(req.file.path, err => {
+      console.log(err);
+    });
+  }
   if (res.headerSent) {
     return next(error);
   }
-  res.status(error.code || 500)
-  res.json({message: error.message || 'An unknown error occurred!'});
+  res.status(error.code || 500);
+  res.json({ message: error.message || 'An unknown error occurred!' });
 });
 
 mongoose
     .connect(`mongodb+srv://happy531:${process.env.MONGO_DB_PASS}@cluster0.azutq.mongodb.net/places?retryWrites=true&w=majority`)
     .then(() => {
-      app.listen(5000);
+        app.listen(5000);
     })
     .catch(err => {
-      console.log(err);
+        console.log(err);
     })
