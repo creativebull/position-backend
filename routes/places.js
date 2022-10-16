@@ -30,7 +30,7 @@ router.post(
   placesControllers.create
 );
 
-router.patch(
+router.put(
   '/:pid',
   [
     check('title')
