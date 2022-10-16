@@ -21,7 +21,6 @@ const getAllPlaces = async (req, res, next) => {
     return next(error);
   }
 
-  // if (!places || places.length === 0) {
   if (!places || places.length === 0) {
     return next(
         new HttpError('Could not find any places.', 404)
