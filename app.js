@@ -50,11 +50,11 @@ app.use((error, req, res, next) => {
 mongoose.set("useCreateIndex", true);
 mongoose
   .connect(
-    `mongodb+srv://happy531:${process.env.MONGO_DB_PASS}@cluster0.azutq.mongodb.net/places?retryWrites=true&w=majority`,
+    process.env.MONGO_URL,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
-    app.listen(process.env.PORT || 5000);
+    app.listen(process.env.PORT);
   })
   .catch((err) => {
     console.log(err);
