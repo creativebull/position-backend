@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', usersController.getUsers);
 
-router.get('/:uid', usersController.getUserbyId);
+router.get('/:id', usersController.getUserbyId);
 
 router.post(
   '/signup',

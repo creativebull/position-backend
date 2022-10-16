@@ -9,9 +9,9 @@ const router = express.Router();
 
 router.get('/', positionsControllers.getAllPositions);
 
-router.get('/:pid', positionsControllers.getPositionById);
+router.get('/:id', positionsControllers.getPositionById);
 
-router.get('/user/:uid', positionsControllers.getPositionsByUserId);
+router.get('/user/:id', positionsControllers.getPositionsByUserId);
 
 router.use(checkAuth);
 
@@ -31,7 +31,7 @@ router.post(
 );
 
 router.put(
-  '/:pid',
+  '/:id',
   [
     check('title')
       .not()
@@ -41,6 +41,6 @@ router.put(
   positionsControllers.update
 );
 
-router.delete('/:pid', positionsControllers.del);
+router.delete('/:id', positionsControllers.del);
 
 module.exports = router;

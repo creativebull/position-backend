@@ -20,7 +20,7 @@ const getUsers = async (req, res, next) => {
 };
 
 const getUserbyId = async (req, res, next) => {
-  const userId = req.params.uid;
+  const userId = req.params.id;
 
   let user;
   try {

@@ -34,7 +34,7 @@ const getAllPositions = async (req, res, next) => {
 };
 
 const getPositionById = async (req, res, next) => {
-  const positionId = req.params.pid;
+  const positionId = req.params.id;
 
   let position;
   try {
@@ -59,7 +59,7 @@ const getPositionById = async (req, res, next) => {
 };
 
 const getPositionsByUserId = async (req, res, next) => {
-  const userId = req.params.uid;
+  const userId = req.params.id;
 
   let userWithPositions;
   try {
@@ -154,7 +154,7 @@ const update = async (req, res, next) => {
   }
 
   const { title, description } = req.body;
-  const positionId = req.params.pid;
+  const positionId = req.params.id;
 
   let position;
   try {
@@ -189,7 +189,7 @@ const update = async (req, res, next) => {
 };
 
 const del = async (req, res, next) => {
-  const positionId = req.params.pid;
+  const positionId = req.params.id;
 
   let position;
   try {
