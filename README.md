@@ -5,14 +5,19 @@
 ### Database
 - MongoDB
 
-### Usage
+## How to run
 
-```sh
-$ git clone
-$ cd 
-$ npm install
-$ npm start
+```bash
+npm install
+```
+Copy .env.example to make .env
+
+```bash
+cp .env.example .env
 ```
 
+```bash
+npm start
+```
 
 

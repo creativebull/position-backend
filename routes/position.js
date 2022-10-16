@@ -1,17 +1,17 @@
 const express = require('express');
 const { check } = require('express-validator');
 
-const placesControllers = require('../controllers/place');
+const positionsControllers = require('../controllers/position');
 const fileUpload = require('../middleware/file-upload');
 const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
-router.get('/', placesControllers.getAllPlaces);
+router.get('/', positionsControllers.getAllPositions);
 
-router.get('/:pid', placesControllers.getPlaceById);
+router.get('/:pid', positionsControllers.getPositionById);
 
-router.get('/user/:uid', placesControllers.getPlacesByUserId);
+router.get('/user/:uid', positionsControllers.getPositionsByUserId);
 
 router.use(checkAuth);
 
@@ -27,7 +27,7 @@ router.post(
       .not()
       .isEmpty()
   ],
-  placesControllers.create
+  positionsControllers.create
 );
 
 router.put(
@@ -38,9 +38,9 @@ router.put(
       .isEmpty(),
     check('description').isLength({ min: 5 })
   ],
-  placesControllers.update
+  positionsControllers.update
 );
 
-router.delete('/:pid', placesControllers.del);
+router.delete('/:pid', positionsControllers.del);
 
 module.exports = router;

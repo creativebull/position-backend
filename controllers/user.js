@@ -24,7 +24,7 @@ const getUserbyId = async (req, res, next) => {
 
   let user;
   try {
-    user = await User.findById(userId, "-places -password -email");
+    user = await User.findById(userId, "-positions -password -email");
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not find a user.",
@@ -89,7 +89,7 @@ const signup = async (req, res, next) => {
     email,
     image: req.file.path,
     password: hashedPassword,
-    places: [],
+    positions: [],
   });
 
   try {
