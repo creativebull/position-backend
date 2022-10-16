@@ -88,7 +88,7 @@ const getPlacesByUserId = async (req, res, next) => {
   });
 };
 
-const createPlace = async (req, res, next) => {
+const create = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
@@ -150,7 +150,7 @@ const createPlace = async (req, res, next) => {
   res.status(201).json({ place: createdPlace });
 };
 
-const updatePlace = async (req, res, next) => {
+const update = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
@@ -193,7 +193,7 @@ const updatePlace = async (req, res, next) => {
   res.status(200).json({ place: place.toObject({ getters: true }) });
 };
 
-const deletePlace = async (req, res, next) => {
+const del = async (req, res, next) => {
   const placeId = req.params.pid;
 
   let place;
@@ -247,6 +247,6 @@ const deletePlace = async (req, res, next) => {
 exports.getAllPlaces = getAllPlaces;
 exports.getPlaceById = getPlaceById;
 exports.getPlacesByUserId = getPlacesByUserId;
-exports.createPlace = createPlace;
-exports.updatePlace = updatePlace;
-exports.deletePlace = deletePlace;
+exports.create = create;
+exports.update = update;
+exports.del = del;
