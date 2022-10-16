@@ -4,8 +4,6 @@ require('dotenv').config()
 const HttpError = require('../models/http-error');
 
 async function getCoordsForAddress(address) {
-  // console.log(address);
-
   const options = {
     method: 'GET',
     url: 'https://trueway-geocoding.p.rapidapi.com/Geocode',
@@ -17,7 +15,6 @@ async function getCoordsForAddress(address) {
   };
 
   const { data } = await axios.request(options);
-  // console.log(data);
 
   if (!data) {
     const error = new HttpError(

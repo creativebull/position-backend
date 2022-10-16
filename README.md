@@ -1,18 +1,18 @@
-## Backend
+### Technology
 - Node
 - Express
-- REST
 
-## API
-- [TrueWay Geocoding](https://rapidapi.com/trueway/api/trueway-geocoding/)
+### Database
+- MongoDB
 
-## Auth
-- JWT
-- bcrypt
+### Usage
 
-## Database
-- MongoDB Atlas
-
+```sh
+$ git clone
+$ cd 
+$ npm install
+$ npm start
+```
 
 
 
