@@ -5,8 +5,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const placesRoutes = require("./routes/places-routes");
-const usersRoutes = require("./routes/users-routes");
+const placesRoutes = require("./routes/places");
+const usersRoutes = require("./routes/users");
 const HttpError = require("./models/http-error");
 
 const app = express();
